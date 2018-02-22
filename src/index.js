@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import PreventingTransitionsExample from './App';
+import NotMatch from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<PreventingTransitionsExample />, document.getElementById('root'));
+ReactDOM.render(<NotMatch />, document.getElementById('root'));
 registerServiceWorker();
