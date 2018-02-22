@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import AnimationExample from './App';
+import AmbiguousExample from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<AnimationExample />, document.getElementById('root'));
+ReactDOM.render(<AmbiguousExample />, document.getElementById('root'));
 registerServiceWorker();
