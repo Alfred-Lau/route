@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import RecursiveExample from './App';
+import SidebarExample from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<RecursiveExample />, document.getElementById('root'));
+ReactDOM.render(<SidebarExample />, document.getElementById('root'));
 registerServiceWorker();
