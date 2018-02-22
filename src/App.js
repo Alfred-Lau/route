@@ -1,58 +1,40 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-const NotMatch = () => (
+const PEEPS = [
+    { id: 0, name: 'Michelle', friends: [ 1, 2, 3 ] },
+    { id: 1, name: 'Sean', friends: [ 0, 3 ] },
+    { id: 2, name: 'Kim', friends: [ 0, 1, 3 ] },
+    { id: 3, name: 'David', friends: [ 1, 2 ] }
+];
+
+/* TODO: pass through the params, be careful about the val type || string or int */
+const find = (id) => PEEPS.find(p => p.id === parseInt(id));
+
+const RecursiveExample = () => (
     <Router>
-        <div>
-            <ul>
-                <li>
-                    <Link to='/'> Home
-                    </Link>
-                </li>
-                <li>
-                    <Link to='/old-match'> old match to be redirect
-                    </Link>
-                </li>
-                <li>
-                    <Link to='/will-match'> will match
-                    </Link>
-                </li>
-                <li>
-                    <Link to='/not-match'> not match
-                    </Link>
-                </li>
-                <li>
-                    <Link to='/also-not-match'> also not match
-                    </Link>
-                </li>
-            </ul>
-            {/* remember to add the Route and Redirect inside the Switch */}
-            <Switch>
-                <Route path='/' exact component={Home}></Route>
-                <Redirect from='/old-match' to='/will-match'></Redirect>
-                <Route path='/will-match' component={WillMatch}></Route>
-                <Route component={NoMatch}></Route>
-            </Switch>
-        </div>
+        <Person match={{params: {id: 0}, url: ''}}></Person>
     </Router>
 );
 
-const Home = () => (
-    <div>
-    Home
-    </div>
-);
+const Person = ({ match }) => {
+    const person = find(match.params.id);
 
-const WillMatch = () => (
-    <div>
-    will match
-    </div>
-);
+    return (
+        <div>
+            <h3>{person.name}'s friends</h3>
+            <ul>
+                {person.friends.map((id) => (
+                    <li key={id}>
+                        <Link to={`${match.url}/${id}`}>
+                            {find(id).name}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
+            <Route path={`${match.url}/:id`} component={Person}></Route>
+        </div>
+    );
+};
 
-const NoMatch = ({location}) => (
-    <div>
-        {`this is no match for ${location.pathname}`}
-    </div>
-);
-
-export default NotMatch;
+export default RecursiveExample;
