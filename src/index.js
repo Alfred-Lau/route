@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import SidebarExample from './App';
+import AnimationExample from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<SidebarExample />, document.getElementById('root'));
+ReactDOM.render(<AnimationExample />, document.getElementById('root'));
 registerServiceWorker();
